@@ -2,7 +2,7 @@
 """
 Created on Sat Aug 29 22:36:13 2020
 
-@author: asus
+@author: ryan wang
 """
 
 
@@ -11,10 +11,6 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
-
-os.chdir("G:\\教育机构\\李辉教育\\王镇熙Facebook机器学习")
-
 
 data = pd.read_csv("dataset_Facebook.csv")
 # 删除列
