@@ -13,10 +13,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 data = pd.read_csv("dataset_Facebook.csv")
-# 删除列
+# delete col
 data = data.drop(['Page total likes','comment', 'like', 'share'], axis=1)
 
-# 将time取对数
+
 colNames = ['Lifetime Post Total Reach', 'Lifetime Post Total Impressions',
      'Lifetime Engaged Users', 'Lifetime Post Consumers','Lifetime Post Consumptions',
      'Lifetime Post Impressions by people who have liked your Page',
@@ -27,7 +27,7 @@ data[colNames] = np.log(data[colNames]+1)
 
 
 
-# 描述性统计
+
 for name in ['Type', 'Category', 'Post Month', 'Post Weekday', 'Post Hour', 'Paid']:
     summ = data[[name,'Total Interactions']].groupby(name).mean()
     summ.to_csv(f"tab\\{name}.csv")
@@ -73,7 +73,7 @@ X_train, X_test, y_train, y_test = train_test_split(data.drop(["Total Interactio
 
 
 
-# 线性回归
+# linear Regression
 from sklearn.linear_model import LinearRegression
 
 reg = LinearRegression()
@@ -81,14 +81,14 @@ reg.fit(X_train, y_train)
 reg.coef_
 reg.intercept_
 
-# 训练误差 Root of mean square error
+# train_erro Root of mean square error
 rmse_train_lm = np.sqrt(((reg.predict(X_train) - y_train)**2).mean())
 rmse_test_lm = np.sqrt(((reg.predict(X_test) - y_test)**2).mean())
 
 
 
 
-# 决策树
+# Decision Tree
 from sklearn.tree import DecisionTreeRegressor
 
 para = np.arange(2, 150, 1)
