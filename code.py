@@ -2,7 +2,7 @@
 """
 Created on Sat Aug 29 22:36:13 2020
 
-@author: ryan wang
+@author: Ryan Wang
 """
 
 
